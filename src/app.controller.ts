@@ -1,12 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@Controller() //Decorator responsible for handling http requests
+@ApiTags('System')
+@Controller('health')
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @ApiOperation({ summary: 'Check API and Database liveness status' })
+  @ApiResponse({ status: 200, description: 'API and database are healthy.' })
+  @ApiResponse({ status: 500, description: 'API or database is unhealthy.' })
+  checkHealth() {
+    return this.appService.checkHealth();
   }
 }

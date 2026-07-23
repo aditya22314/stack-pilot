@@ -8,3 +8,13 @@ datasource db {
 }
 
 // We will add models (tables) here in the next sprints!
+
+model Repository {
+  id          String   @id @default(uuid())
+  name        String
+  status      String   @default("UPLOADED") // UPLOADED, EXTRACTED, FAILED
+  storagePath String?
+  sizeBytes   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

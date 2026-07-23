@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-07-23
+
+### Added
+- **Repository Entity & Migration**: Added `Repository` database model (`id`, `name`, `status`, `storagePath`, `sizeBytes`, `createdAt`, `updatedAt`) and executed migration `20260723160215_init_repository`.
+- **Storage Module**: Created `StorageService` for safe ZIP extraction using `extract-zip` and automated temporary file cleanup (`deleteFile`).
+- **Repository Upload Endpoint**: Created `POST /repositories/upload` endpoint using `@UseInterceptors(FileInterceptor('file'))` with a 50MB file size limit and ZIP format validation.
+- **Repository Lookup Endpoint**: Created `GET /repositories/:id` endpoint for fetching repository status and storage details.
+- **Unit Tests & Integration Verification**: Added unit tests for `RepositoriesService` and verified end-to-end extraction workflow.
+
 ## [0.1.0] - 2026-07-18
 
 ### Added

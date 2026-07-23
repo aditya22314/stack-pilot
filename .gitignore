@@ -35,3 +35,8 @@ Thumbs.db
 
 # Prisma
 prisma/migrations/**/migration_lock.toml
+
+# Upload & Repository Storage
+.tmp/
+storage/
+
